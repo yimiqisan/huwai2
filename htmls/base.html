@@ -17,6 +17,8 @@
 		<script src="{{ static_url('js/deep.js') }}"></script>
 		<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="100267721" data-redirecturi="http://www.shenhuxi.com/o/login" charset="utf-8"></script>
 		<script language="javascript" type="text/javascript">
+		//QC.Login.signOut()
+		//QC.Login.check()
 			$(document).ready(function() {
 				QC.Login({
 					btnId:"qqLoginBtn",
@@ -74,7 +76,7 @@
 							{% if not current_user %}
 								<li class=""><a href="/login" onclick="$('#login').modal();return false;">登陆</a></li>
 								<li class=""><a href="/reg" onclick="$('#reg').modal();return false;">注册</a></li>
-								<li class=""><a><span id="qqLoginBtn"></span></a></li>
+								<li class=""><a ><span id="qqLoginBtn"></span></a></li>
 							{% else %}
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current_user }}<b class="caret"></b></a>

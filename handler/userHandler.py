@@ -45,15 +45,16 @@ class QQRegAjax(BaseHandler):
         token = self.get_argument('token')
         nick = self.get_argument('nick')
         user = User()
-        print openid, token, nick
         r = user.qq(openid, token, nick=nick)
         if r[0]:
             self.SESSION['uid']=user._id
             self.SESSION['nick']=user.nick
             ref = self.request.headers.get('Referer', '').split('/')[-1]
             if ref == 'reg':ref='/'
+            print ref
             return self.redirect('/'+ref)
         else:
+            print 'error'
             return self.redirect('/reg/')
 
 class RegCheck(BaseHandler):
