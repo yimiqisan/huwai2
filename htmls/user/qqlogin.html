@@ -5,18 +5,19 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var args = {};
+			QC.Login.getMe(function(openId, accessToken){
+				args.openid = openId;
+				args.token = accessToken
+			});
 			QC.api("get_user_info").success(function(s){
 				args.nick = s.data.nickname;
 				args.avatar = s.data.figureurl;
 				args.gender = s.data.gender;
-				QC.Login.getMe(function(openId, accessToken){
-					args.openid = openId;
-					args.token = accessToken
-				});
 			}).error(function(f){
 				alert("获取用户信息失败！");
 			}).complete(function(c){
-				alert(c.stringifyData());
+				//alert(c.stringifyData());
+				alert(args.openid);
 				$.postJSON('/qq/reg/', 'POST', args, function(response){
 					if (response.error){
 						alert(response.error);
