@@ -3,7 +3,6 @@
 {% block static %}
 	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
 	<script type="text/javascript">
-		/qq/reg/
 		var args = {};
 		QC.api("get_user_info", {}).success(function(s){
 			args.nick = s.data.nickname;
@@ -16,7 +15,7 @@
 		}).error(function(f){
 			alert("获取用户信息失败！");
 		}).complete(function(c){
-			$.postJSON(url, 'POST', args, function(response){
+			$.postJSON('/qq/reg/', 'POST', args, function(response){
 			    if (response.error){
 					alert(response.error);
 				    return false;
