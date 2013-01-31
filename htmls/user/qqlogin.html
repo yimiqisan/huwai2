@@ -3,30 +3,31 @@
 {% block static %}
 	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
 	<script type="text/javascript">
-		var args = {};
-		QC.api("get_user_info", {}).success(function(s){
-			args.nick = s.data.nickname;
-			args.avatar = s.data.figureurl;
-			args.gender = s.data.gender;
-			QC.Login.getMe(function(openId, accessToken){
-				args.openid = openId;
-				args.token = accessToken
+		$(document).ready(function() {
+			var args = {};
+			QC.api("get_user_info").success(function(s){
+				args.nick = s.data.nickname;
+				args.avatar = s.data.figureurl;
+				args.gender = s.data.gender;
+				QC.Login.getMe(function(openId, accessToken){
+					args.openid = openId;
+					args.token = accessToken
+				});
+			}).error(function(f){
+				alert("获取用户信息失败！");
+			}).complete(function(c){
+				alert(c.stringifyData());
+				$.postJSON('/qq/reg/', 'POST', args, function(response){
+					if (response.error){
+						alert(response.error);
+				    	return false;
+        	    	} else if (response.ok) {
+						alert(response.ok);
+                    	return true;
+        	    	}
+				})
 			});
-		}).error(function(f){
-			alert("获取用户信息失败！");
-		}).complete(function(c){
-			$.postJSON('/qq/reg/', 'POST', args, function(response){
-			    if (response.error){
-					alert(response.error);
-				    return false;
-        	    } else if (response.ok) {
-					alert(response.ok);
-                    return true;
-        	    }
-			})
-
-		});
-		
+		})
 </script>
 {% end %}
 

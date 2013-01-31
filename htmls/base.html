@@ -15,10 +15,12 @@
 		<script src="{{ static_url('js/bootstrap.min.js') }}" type="text/javascript"></script>
 		<script src="{{ static_url('js/html5.js') }}"></script>
 		<script src="{{ static_url('js/deep.js') }}"></script>
+		<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="100267721" data-redirecturi="http://www.shenhuxi.com/o/login" charset="utf-8"></script>
 		<script language="javascript" type="text/javascript">
-		$(document).ready(function() {
-			perdict();
-		})
+			$(document).ready(function() {
+				QC.Login({btnId:"qqLoginBtn",size:"B_M"});
+				perdict();
+			})
 	</script>
 	{% block static %}{% end %}
 	</head>
@@ -36,6 +38,7 @@
 						</ul>
 						<ul class="nav pull-right">
 							{% if not current_user %}
+								<li class=""><a><span id="qqLoginBtn"></span></a></li>
 								<li class=""><a href="/login" onclick="$('#login').modal();return false;">登陆</a></li>
 								<li class=""><a href="/reg" onclick="$('#reg').modal();return false;">注册</a></li>
 							{% else %}

@@ -1,17 +1,9 @@
 {% extends base.html %}
 
-{% block static %}
-	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="100267721" data-redirecturi="http://www.shenhuxi.com/o/login" charset="utf-8"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			QC.Login({btnId:"qqLoginBtn"});
-		})
-	</script>
-{% end %}
+{% block static %}{% end %}
 
 {% block body %}
 <div class="well span3">
-	<span id="qqLoginBtn"></span>
 	<form class="form-horizontal" action="/login/" method="POST">
 		<div class="control-group">
 			<div class="controls" for="name">
