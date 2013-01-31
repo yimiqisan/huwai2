@@ -1,0 +1,37 @@
+{% extends base.html %}
+
+{% block static %}
+	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="100267721" data-redirecturi="http://www.shenhuxi.com/o/login" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			QC.Login({btnId:"qqLoginBtn"});
+		})
+	</script>
+{% end %}
+
+{% block body %}
+<div class="well span3">
+	<span id="qqLoginBtn"></span>
+	<form class="form-horizontal" action="/login/" method="POST">
+		<div class="control-group">
+			<div class="controls" for="name">
+				<input type="text" name="name" check_url="/c/login/" id="inputName" class="span3" placeholder="手机号码(必填)"/>
+				<p class="help-inline">请输入手机号码或者QQ号</p><p class="predict-inline"></p>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls" for="password">
+				<input type="password" name="password" id="inputPassword" class="span3" placeholder="密码(必填)" />
+				<p class="help-inline">请输入密码</p>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<a href="/reg" class="btn btn-mini pull-left" style="margin-top:5px;"><i class="icon-chevron-left"></i>去注册</a>
+				<button type="submit" class="btn pull-right censor">登陆</button>
+				<label class="remindme checkbox pull-right"><input type="checkbox"> 记住我</label>
+			</div>
+		</div>
+	</form>
+</div>
+{% end %}

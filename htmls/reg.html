@@ -1,0 +1,39 @@
+{% extends base.html %}
+
+{% block static %}{% end %}
+
+{% block body %}
+<div class="well span3">
+	<form class="form-horizontal" action="/reg/" method="POST">
+		<div class="control-group">
+			<div class="controls" for="icode">
+				<input type="text" name="icode" check_url="/c/reg/" id="inputIcode" class="span3" placeholder="邀请码(必填)"/>
+				<p class="help-inline">请输入邀请码</p><p class="predict-inline"></p>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls" for="name">
+				<input type="text" name="name" check_url="/c/reg/" id="inputName" class="span3" placeholder="手机号码(必填)"/>
+				<p class="help-inline">请输入手机号码或者QQ号</p><p class="predict-inline"></p>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls" for="password">
+				<input type="password" name="password" id="inputPassword" class="span3" placeholder="密码(必填)" />
+				<p class="help-inline">请输入密码</p>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls" for="nick">
+				<input type="text" name="nick" id="inputNick" class="span3" placeholder="昵称" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<a href="/login" class="btn btn-mini pull-left" style="margin-top:5px;"><i class="icon-chevron-left"></i>去登陆</a>
+				<button type="submit" class="btn pull-right censor">提交注册</button>
+			</div>
+		</div>
+	</form>
+</div>
+{% end %}

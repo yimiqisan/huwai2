@@ -1,0 +1,12 @@
+.bodier {min-height:400px;padding-top:30px;}
+.form-horizontal .controls{margin-left:0px;}
+.control-group .help-inline,.control-group .predict-inline{display:none;}
+.error .help-inline{display:inline}
+.info .help-inline{display:none}
+
+.control-group.success .predict-inline {color: #468847;}
+.control-group.info .predict-inline {color: #3a87ad;}
+
+.success .predict-inline, .info .predict-inline{display:inline}
+
+.control-group .remindme{margin-right:5px;padding:4px 12px;}
