@@ -40,11 +40,12 @@ class RegHandler(BaseHandler):
 class QQRegAjax(BaseHandler):
     @session
     def post(self):
-        icode = self.get_argument('icode')
+        #icode = self.get_argument('icode')
         openid = self.get_argument('openid')
         token = self.get_argument('token')
         nick = self.get_argument('nick')
         user = User()
+        print openid, token, nick
         r = user.qq(openid, token, nick=nick)
         if r[0]:
             self.SESSION['uid']=user._id
