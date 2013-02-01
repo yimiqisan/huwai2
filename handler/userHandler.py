@@ -46,6 +46,7 @@ class QQRegAjax(BaseHandler):
         nick = self.get_argument('nick')
         user = User()
         r = user.qq(openid, token, nick=nick)
+        print r
         if r[0]:
             self.SESSION['uid']=user._id
             self.SESSION['nick']=user.nick
@@ -118,6 +119,8 @@ class LoginAjax(BaseHandler):
 class LoginOAuth(BaseHandler):
     @session
     def get(self):
+        ref = self.request.headers.get('Referer', '').split('/')[-1]
+        return self.redirect('/'+ref)
         self.render("user/qqlogin.html")
 
 class LogoutHandler(BaseHandler):
