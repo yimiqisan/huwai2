@@ -119,8 +119,6 @@ class LoginAjax(BaseHandler):
 class LoginOAuth(BaseHandler):
     @session
     def get(self):
-        ref = self.request.headers.get('Referer', '').split('/')[-1]
-        return self.redirect('/'+ref)
         self.render("user/qqlogin.html")
 
 class LogoutHandler(BaseHandler):

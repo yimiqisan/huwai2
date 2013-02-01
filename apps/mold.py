@@ -32,6 +32,7 @@ class UserDoc(Document):
     structure = {
             '_id':      unicode,
             'tel':      unicode,
+            'qq':       unicode,
             'nick':     unicode,
             'password': unicode,
             'created':  datetime,

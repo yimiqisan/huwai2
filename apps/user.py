@@ -52,8 +52,8 @@ class User(object):
         return c
     
     def qq(self, openid, token, **info):
-        if self._api.exist('tel', tel):
-            return (False, '已存在此电话号码')
+        if self._api.exist('qq', openid):
+            return (False, '此号码已注册')
         info.update({'qq':openid, 'qq_token':token})
         c = self._api.create(**info)
         self.info = info if c[0] else None
