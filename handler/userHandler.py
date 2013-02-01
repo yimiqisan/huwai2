@@ -49,8 +49,9 @@ class QQRegAjax(BaseHandler):
         if r[0]:
             self.SESSION['uid']=user._id
             self.SESSION['nick']=user.nick
+            self.write(json.dumps({'ok':'ok'}))
         else:
-            self.write('')
+            self.write(json.dumps({'error':str(r)}))
 
 class RegCheck(BaseHandler):
     def get(self):
