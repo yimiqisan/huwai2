@@ -50,7 +50,7 @@ class QQRegAjax(BaseHandler):
             self.SESSION['uid']=user._id
             self.SESSION['nick']=user.nick
         else:
-            print r
+            self.write('')
 
 class RegCheck(BaseHandler):
     def get(self):

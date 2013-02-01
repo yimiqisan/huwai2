@@ -155,6 +155,7 @@ qq_login = function(){
         	            $.postJSON('/qq/login/', 'POST', {'openid':openId}, function(response){})
         	            return true;
         	        }
+        	        window.location.reload();
 			    })
 		    });
 		}, function(opts){
