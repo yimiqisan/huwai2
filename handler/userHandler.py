@@ -93,6 +93,7 @@ class QQLoginAjax(BaseHandler):
         user.whois('qq', openid)
         self.SESSION['uid']=user._id
         self.SESSION['nick']=user.nick
+        self.write(json.dumps({'ok':'ok'}))
 
 class LoginCheck(BaseHandler):
     def get(self):

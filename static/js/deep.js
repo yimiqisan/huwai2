@@ -146,13 +146,13 @@ qq_login = function(){
             QC.Login.getMe(function(openId, accessToken){
                 args.openid = openId;
                 args.token = accessToken;
-                $.postJSON(url, 'GET', {'qq':openId}, function(response){
+                $.postJSON('/c/login/', 'GET', {'key':'qq','val':openId}, function(response){
 			        if (response.error){
 			            args.icode = window.prompt("请输入邀请码");
                         $.postJSON('/qq/reg/', 'POST', args, function(response){})
 				        return false;
         	        } else if (response.ok) {
-        	            $.postJSON('/qq/login/', 'POST', {'qq':openId}, function(response){})
+        	            $.postJSON('/qq/login/', 'POST', {'openid':openId}, function(response){})
         	            return true;
         	        }
 			    })
