@@ -18,6 +18,7 @@ handlers = [(r"/", RootHandler),
             (r"/login/", LoginHandler),
             (r"/a/login/", LoginAjax),
             (r"/c/login/", LoginCheck),
+            (r"/qq/login/", QQLoginAjax),
             (r"/o/login/", LoginOAuth),
             
             (r"/logout/", LogoutHandler),

@@ -51,7 +51,7 @@ class User(object):
         self.info = info if c[0] else None
         return c
     
-    def qq(self, openid, token, **info):
+    def qqreg(self, openid, token, **info):
         if self._api.exist('qq', openid):
             return (False, '此号码已注册')
         info.update({'qq':openid, 'qq_token':token})

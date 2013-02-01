@@ -19,7 +19,6 @@
 		<script language="javascript" type="text/javascript">
 		//QC.Login.signOut()
 		//QC.Login.check()
-		//QC.Login.showPopup({appId:"100267721",redirect_URI:"http://www.shenhuxi.com/o/login"});
 			$(document).ready(function() {
 				if (!QC.Login.check()) {qq_login();}
 				perdict();
@@ -51,7 +50,7 @@
 										<li class="hide"><a href="/account/profile"><i class="icon-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;个人主页</a></li>
 										<li><a href="/account/setting"><i class="icon-cog"></i>&nbsp;&nbsp;&nbsp;&nbsp;账户设置</a></li>
 										<li class="divider"></li>
-										<li><a href="/logout"><i class="icon-off"></i>&nbsp;&nbsp;&nbsp;&nbsp;退出</a></li>
+										<li><a href="/logout" onclick="if (QC.Login.check()) {QC.Login.signOut();} return true;"><i class="icon-off"></i>&nbsp;&nbsp;&nbsp;&nbsp;退出</a></li>
 									</ul>
 								</li>
 							{% end %}

@@ -124,7 +124,6 @@ perdict = function(){
 	})
 }
 
-
 qq_login = function(){
     QC.Login({
         btnId:"qqLoginBtn",
@@ -141,22 +140,22 @@ qq_login = function(){
 			    figureurl : reqData.figureurl
 			}));
             var args = {};
-            args.icode = window.prompt("请输入邀请码");
             args.nick = reqData.nickname;
             args.avatar = reqData.figureurl;
             args.gender = reqData.gender;
             QC.Login.getMe(function(openId, accessToken){
                 args.openid = openId;
                 args.token = accessToken;
-                $.postJSON('/qq/reg/', 'POST', args, function(response){
-				    if (response.error){
-				        alert(response.error);
-			            return false;
-		            } else if (response.ok) {
-				        alert(response.ok);
-			            return true;
-		            }
-		        })
+                $.postJSON(url, 'GET', {'qq':openId}, function(response){
+			        if (response.error){
+			            args.icode = window.prompt("请输入邀请码");
+                        $.postJSON('/qq/reg/', 'POST', args, function(response){})
+				        return false;
+        	        } else if (response.ok) {
+        	            $.postJSON('/qq/login/', 'POST', {'qq':openId}, function(response){})
+        	            return true;
+        	        }
+			    })
 		    });
 		}, function(opts){
             alert('QQ登录 注销成功');

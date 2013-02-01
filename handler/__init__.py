@@ -8,5 +8,5 @@ Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 """
 
 from commonHandler import RootHandler, Error404Handler
-from userHandler import RegHandler, RegCheck, QQRegAjax, LoginHandler, LoginCheck, LoginAjax, LoginOAuth, LogoutHandler
+from userHandler import RegHandler, RegCheck, QQRegAjax, LoginHandler, LoginCheck, QQLoginAjax, LoginAjax, LoginOAuth, LogoutHandler
 from eventHandler import EventHandler, EventItemHandler, EventNewHandler

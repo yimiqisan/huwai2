@@ -40,23 +40,17 @@ class RegHandler(BaseHandler):
 class QQRegAjax(BaseHandler):
     @session
     def post(self):
-        #icode = self.get_argument('icode')
+        icode = self.get_argument('icode')
         openid = self.get_argument('openid')
         token = self.get_argument('token')
         nick = self.get_argument('nick')
         user = User()
-        r = user.qq(openid, token, nick=nick)
-        print r
+        r = user.qqreg(openid, token, nick=nick)
         if r[0]:
             self.SESSION['uid']=user._id
             self.SESSION['nick']=user.nick
-            ref = self.request.headers.get('Referer', '').split('/')[-1]
-            if ref == 'reg':ref='/'
-            print ref
-            return self.redirect('/'+ref)
         else:
-            print 'error'
-            return self.redirect('/reg/')
+            print r
 
 class RegCheck(BaseHandler):
     def get(self):
@@ -91,6 +85,15 @@ class LoginHandler(BaseHandler):
             print '密码不正确'
             return self.redirect('/login/')
 
+class QQLoginAjax(BaseHandler):
+    @session
+    def post(self):
+        openid = self.get_argument('openid')
+        user = User()
+        user.whois('qq', openid)
+        self.SESSION['uid']=user._id
+        self.SESSION['nick']=user.nick
+
 class LoginCheck(BaseHandler):
     def get(self):
         key = self.get_argument('key')
@@ -101,6 +104,11 @@ class LoginCheck(BaseHandler):
                 d['ok'] = '有效的电话号码'
             else:
                 d['error'] = '不存在此电话号码'
+        elif key == 'qq':
+            if User.exist('qq', val):
+                d['ok'] = '可登陆QQ号'
+            else:
+                d['error'] = '尚未绑定，不可用'
         return self.write(json.dumps(d))
 
 class LoginAjax(BaseHandler):
