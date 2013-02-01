@@ -47,7 +47,7 @@ class UserDoc(Document):
         },
     ]
     
-    required_fields = ['_id', 'password', 'created']
+    required_fields = ['_id', 'created']
     default_values = {'_id':uuid.uuid4().hex, 'created':datetime.now()}
     
     use_schemaless = True
